@@ -461,14 +461,44 @@ namespace FFTWSharp
              ExactSpelling = true,
              CallingConvention = CallingConvention.Cdecl)]
 		public static extern void print_plan(IntPtr plan);
-	}
-	#endregion
 
-	#region Double Precision
-	/// <summary>
-	/// Contains the Basic Interface FFTW functions for double-precision (double) operations
-	/// </summary>
-	public class fftw
+        /// <summary>
+        /// Exports the accumulated Wisdom to the provided filename
+        /// </summary>
+        /// <param name="filename">The target filename</param>
+        [DllImport("libfftw3f-3.dll",
+             EntryPoint = "fftwf_export_wisdom_to_filename",
+             ExactSpelling = true,
+             CallingConvention = CallingConvention.Cdecl)]
+        public static extern void export_wisdom_to_filename(string filename);
+
+
+        /// <summary>
+        /// Imports Wisdom from provided filename
+        /// </summary>
+        /// <param name="filename">The filename to read from</param>
+        [DllImport("libfftw3f-3.dll",
+             EntryPoint = "fftwf_import_wisdom_from_filename",
+             ExactSpelling = true,
+             CallingConvention = CallingConvention.Cdecl)]
+        public static extern void import_wisdom_from_filename(string filename);
+
+        /// <summary>
+        /// Forgets the Wisdom
+        /// </summary>
+        [DllImport("libfftw3f-3.dll",
+             EntryPoint = "fftwf_forget_wisdom",
+             ExactSpelling = true,
+             CallingConvention = CallingConvention.Cdecl)]
+        public static extern void fftwf_forget_wisdom();
+    }
+    #endregion
+
+    #region Double Precision
+    /// <summary>
+    /// Contains the Basic Interface FFTW functions for double-precision (double) operations
+    /// </summary>
+    public class fftw
 	{
 		/// <summary>
 		/// Allocates FFTW-optimized unmanaged memory
@@ -808,6 +838,36 @@ namespace FFTWSharp
              ExactSpelling = true,
              CallingConvention = CallingConvention.Cdecl)]
 		public static extern void print_plan(IntPtr plan);
-	}
-	#endregion
+
+        /// <summary>
+        /// Exports the accumulated Wisdom to the provided filename
+        /// </summary>
+        /// <param name="filename">The target filename</param>
+        [DllImport("libfftw3-3.dll",
+             EntryPoint = "fftw_export_wisdom_to_filename",
+             ExactSpelling = true,
+             CallingConvention = CallingConvention.Cdecl)]
+        public static extern void export_wisdom_to_filename(string filename);
+
+
+        /// <summary>
+        /// Imports Wisdom from provided filename
+        /// </summary>
+        /// <param name="filename">The filename to read from</param>
+        [DllImport("libfftw3-3.dll",
+             EntryPoint = "fftw_import_wisdom_from_filename",
+             ExactSpelling = true,
+             CallingConvention = CallingConvention.Cdecl)]
+        public static extern void import_wisdom_from_filename(string filename);
+
+        /// <summary>
+        /// Forgets the Wisdom
+        /// </summary>
+        [DllImport("libfftw3-3.dll",
+             EntryPoint = "fftw_forget_wisdom",
+             ExactSpelling = true,
+             CallingConvention = CallingConvention.Cdecl)]
+        public static extern void fftw_forget_wisdom();
+    }
+    #endregion
 }
